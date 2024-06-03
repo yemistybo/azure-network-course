@@ -38,6 +38,7 @@ resource "azurerm_windows_virtual_machine" "vm" {
   custom_data = var.install_webapp ? filebase64("../scripts/install-tools-windows.ps1") : null
 
   os_disk {
+    name                 = "os-disk-vm"
     caching              = "ReadWrite"
     storage_account_type = "Standard_LRS"
   }
@@ -45,7 +46,7 @@ resource "azurerm_windows_virtual_machine" "vm" {
   source_image_reference {
     publisher = "MicrosoftWindowsDesktop"
     offer     = "windows-11"
-    sku       = "win11-22h2-pro"
+    sku       = "win11-23h2-pro"
     version   = "latest"
   }
 
